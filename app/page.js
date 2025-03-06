@@ -4,6 +4,32 @@ import ButtonLogin from '@/components/ButtonLogin';
 export default function Home() {
   const isLoggedIn = true;
   const name = "Rufus";
+  const greeting1 = "Hello " + name;
+  const greeting2 = `Hello ${isLoggedIn ? name : "there"}`;
+  console.log(greeting1);
+  console.log(greeting2);
+  const fruits = ['🍏', '🍌','🍒'];
+  console.log(fruits);
+  console.log(fruits[0]);
+  console.log(fruits.length);
+  fruits[0] = '🍉';
+  console.log(fruits);
+  fruits.push('🍇');
+  console.log(fruits.length);
+  const fruitSalad = fruits.map((poop) => {
+    return `I love ${poop}`;
+  }
+  );
+  console.log(fruitSalad);
+  const fruitsNoBananas = fruits.filter((fruit) => {
+    if (fruit !== '🍌') { 
+      return true;
+    }
+    
+  });
+  console.log(fruitsNoBananas);
+  
+
   return ( 
     <main>
       {/* HEADER */}
@@ -43,7 +69,7 @@ export default function Home() {
           <h2 className='text-3xl lg:text-4xl font-extrabold mb-12 text-center'>Nothing upfront, pay as you go</h2>
 
           <div className='p-8 bg-base-100 max-w-96 rounded-3xl mx-auto space-y-6'>
-            <div className='flex gap-2 items-baseline '>
+            <div className='flex gap-2 items-baseline text-center justify-center'>
               <div className='text-4xl font-black'>$19</div>
               <div className=' uppercase text-sm font-medium opacity-60'>/Month</div>
             </div>  
@@ -93,7 +119,7 @@ export default function Home() {
                 </svg>
                 Connects to all major POS systems</li>
             </ul>
-            <ButtonLogin isLoggedIn={isLoggedIn} name={name}/> 
+            <ButtonLogin isLoggedIn={isLoggedIn} name={name} extraStyle="w-full"/> 
           </div>
           
         </div>
