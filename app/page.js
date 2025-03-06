@@ -1,6 +1,8 @@
 
 import ButtonLogin from '@/components/ButtonLogin'; 
 import FAQListItem from '@/components/FAQListItem';
+import Image from 'next/image';
+import productDemo from './productDemo.jpeg';
 
 // import Example from '@/components/Example';
 
@@ -40,7 +42,7 @@ export default function Home() {
     <main>
       {/* HEADER */}
       <section className='bg-base-200' >
-        <div className=" max-w-3xl mx-auto flex justify-between items-center px-8">
+        <div className=" max-w-5xl mx-auto flex justify-between items-center px-8">
           <div className=" font-bold">
             ReUp
           </div>
@@ -59,20 +61,24 @@ export default function Home() {
       </section>
 
       {/* HERO */}
-      <section className="py-32 px-8 max-w-3xl mx-auto text-center">
-          <h1 className="text-4xl lg:text-6xl font-extrabold mb-6">
-              All your reordering done in 5 minutes
-          </h1>
-        <div className='opacity-90 mb-10'>
-          Create draft orders, prioritze based on budget or vendor, and place all orders in a few clicks.
-        </div>
-      
-        <ButtonLogin isLoggedIn={isLoggedIn} name={name}/>
+      <section className="py-32 px-8 max-w-5xl mx-auto text-center flex flex-col lg:flex-row gap-14 items-center lg:items-start">
+          <div>
+            <h1 className="text-4xl lg:text-6xl font-extrabold mb-6">
+                All your reordering done in 5 minutes
+            </h1>
+            <div className='opacity-90 mb-10'>
+              Create draft orders, prioritze based on budget or vendor, and place all orders in a few clicks.
+            </div>
+        
+            <ButtonLogin isLoggedIn={isLoggedIn} name={name}/>
+          </div>
+          
+        <Image src={productDemo} alt="Product Demo" className='max-w-96 rounded-xl ' />
       </section>
 
       {/* PRICING */}
       <section className='bg-base-200 ' id="pricing">
-        <div className='py-32 px-8 max-w-3xl mx-auto '>
+        <div className='py-32 px-8 max-w-5xl mx-auto '>
           <p className='text-md uppercase font-medium text-primary mb-4 text-center' >Pricing</p>
           <h2 className='text-3xl lg:text-4xl font-extrabold mb-12 text-center'>Nothing upfront, pay as you go</h2>
           {/* Pricing Card */}
