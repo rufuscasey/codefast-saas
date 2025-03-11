@@ -3,13 +3,12 @@ import ButtonLogin from '@/components/ButtonLogin';
 import FAQListItem from '@/components/FAQListItem';
 import Image from 'next/image';
 import productDemo from './productDemo.jpeg';
+import {auth} from '@/auth';
 
-// import Example from '@/components/Example';
+export default async function Home() {
+  const session = await auth ()
+  console.log(session);
 
-
-export default function Home() {
-  const isLoggedIn = true;
-  const name = "Rufus";
   // const greeting1 = "Hello " + name;
   // const greeting2 = `Hello ${isLoggedIn ? name : "there"}`;
   // console.log(greeting1);
@@ -35,6 +34,7 @@ export default function Home() {
   // });
   // console.log(fruitsNoBananas);
   
+console.log(process.env.MONGO_URI);
 
   
 
@@ -52,7 +52,7 @@ export default function Home() {
               <a className='link link-hover' href='#faq'>FAQ</a>
             </div>
             <div className='py-2'>
-              <ButtonLogin isLoggedIn={isLoggedIn} name={name}/>
+              <ButtonLogin session={session}/>
             </div>
           </div>
         </div>
@@ -70,7 +70,7 @@ export default function Home() {
               Create draft orders, prioritze based on budget or vendor, and place all orders in a few clicks.
             </div>
         
-            <ButtonLogin isLoggedIn={isLoggedIn} name={name}/>
+            <ButtonLogin session={session}/>
           </div>
           
         <Image src={productDemo} alt="Product Demo" className='max-w-96 rounded-xl ' />
@@ -113,7 +113,7 @@ export default function Home() {
               })}
                    
             </ul>
-            <ButtonLogin isLoggedIn={isLoggedIn} name={name} extraStyle="w-full"/> 
+            <ButtonLogin session={session} extraStyle="w-full"/> 
             {/* <Example></Example> */}
           </div>
           
