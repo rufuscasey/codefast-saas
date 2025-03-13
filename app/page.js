@@ -96,7 +96,7 @@ console.log(process.env.MONGO_URI);
                   "Connects to all major POS systems"
                 ].map((priceItem) => {
                     return (
-                    <li className='flex items-center gap-2' key='{priceItem}'>
+                    <li className='flex items-center gap-2' key="{priceItem}">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="size-4">
                         <path 
                         fillRule="evenodd" 
