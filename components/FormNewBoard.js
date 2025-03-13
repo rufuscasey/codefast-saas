@@ -1,6 +1,6 @@
 const FormNewBoard = () => {
     return (
-    <div className="bg-base-100 p-8 rounded-3xl space-y-8">
+    <form className="bg-base-100 p-8 rounded-3xl space-y-8">
         <label className="form-control w-full ">
             <div className="label">
                 <span className="label-text">Board Name</span>
@@ -9,9 +9,9 @@ const FormNewBoard = () => {
             />
         </label>
 
-       <button className="btn btn-primary w-full">Create Board</button>
+       <button className="btn btn-primary w-full" type="submit">Create Board</button>
 
-    </div>
+    </form>
     )
 };
 
