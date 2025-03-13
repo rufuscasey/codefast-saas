@@ -6,7 +6,6 @@ import Board from "@/models/Board";
 
 
 export async function POST(req) {
-  // do something
     try {
         const body = await req.json();
 
@@ -40,7 +39,6 @@ export async function POST(req) {
 
         return NextResponse.json({});
 
-        // do something
     } catch (e) {
         // send back error
         return NextResponse.json(
