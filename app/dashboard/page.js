@@ -40,8 +40,8 @@ export default async function Dashboard() {
             {user.boards.map((board) => (
               <li 
                 key={board._id}
-                className="bg-base-100 p6 rounded-3xl ">
-                <h2>{board.name}</h2>
+                className="bg-base-100 p-6 rounded-3xl ">
+                {board.name}
               </li>
             ))}
           </ul>
