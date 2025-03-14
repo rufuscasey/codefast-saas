@@ -28,10 +28,22 @@ export default async function Dashboard() {
         </section>
       
       {/* MAIN */}
-      <section className="max-w-5xl mx-auto px-5 py-12">
+      <section className="max-w-5xl mx-auto px-5 py-12 space-y-12">
         <FormNewBoard />
         <div>
-          <h1>Boards</h1>
+          <h1 className="font-extrabold text-xl mb-4">
+            {user.boards.length} Boards
+          </h1>
+
+          <ul className="space-y-4 ">
+            {user.boards.map((board) => (
+              <li 
+                key={board._id}
+                className="bg-base-100 p6 rounded-3xl ">
+                <h2>{board.name}</h2>
+              </li>
+            ))}
+          </ul>
         </div>
       
       </section>
