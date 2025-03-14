@@ -6,7 +6,7 @@ const FormNewBoard = () => {
     const [name, setName] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
         if (isLoading) return;
@@ -15,13 +15,24 @@ const FormNewBoard = () => {
 
         try {
             // Create a new board via API
-
+            await fetch("api/board",{
+                method: "POST",
+                body: JSON.stringify({ 
+                    name, 
+                }),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+            
         } catch (error) {
             console.error(error);
+            
+        } finally {
             setIsLoading(false);
+            console.log("hit 'finally'");
         }
     }
-    
     return (
     <form 
         className="bg-base-100 p-8 rounded-3xl space-y-8"
