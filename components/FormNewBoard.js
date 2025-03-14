@@ -20,7 +20,7 @@ const FormNewBoard = () => {
         try {
             // Create a new board via API
             const data = await axios.post("/api/board", { name });
-            console.log(data);
+            // console.log(data);
             // Clear the form
             setName("");
             router.refresh();
@@ -37,7 +37,6 @@ const FormNewBoard = () => {
             
         } finally {
             setIsLoading(false);
-            console.log("hit 'finally'");
         }
     }
     return (
