@@ -15,7 +15,7 @@ const FormNewBoard = () => {
 
         try {
             // Create a new board via API
-            await fetch("api/board",{
+            const response = await fetch("api/board",{
                 method: "POST",
                 body: JSON.stringify({ 
                     name, 
@@ -24,6 +24,8 @@ const FormNewBoard = () => {
                     "Content-Type": "application/json",
                 },
             })
+            const data = await response.json();
+            console.log(data);
             
         } catch (error) {
             console.error(error);

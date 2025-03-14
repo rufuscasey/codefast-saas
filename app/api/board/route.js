@@ -37,7 +37,7 @@ export async function POST(req) {
         user.boards.push(board._id);
         await user.save();
 
-        return NextResponse.json({});
+        return NextResponse.json(board);
 
     } catch (e) {
         // send back error
