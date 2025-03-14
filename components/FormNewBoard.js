@@ -26,8 +26,12 @@ const FormNewBoard = () => {
             router.refresh();
             toast.success("Board created!");
             
+       
         } catch (error) {
-            const errorMessage = error.response.data.error || error.message || "Something went wrong";
+            const errorMessage = 
+                error.response?.data?.error || 
+                error.message || 
+                "Something went wrong";
             console.error(error);
             toast.error(errorMessage);
             
