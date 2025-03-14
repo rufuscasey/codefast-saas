@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import axios from "axios";
 
 const FormNewBoard = () => {
     const [name, setName] = useState("");
@@ -15,17 +16,18 @@ const FormNewBoard = () => {
 
         try {
             // Create a new board via API
-            const response = await fetch("api/board",{
-                method: "POST",
-                body: JSON.stringify({ 
-                    name, 
-                }),
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            })
-            const data = await response.json();
+            // const response = await fetch("api/board",{
+            //     method: "POST",
+            //     body: JSON.stringify({ 
+            //         name, 
+            //     }),
+            //     headers: {
+            //         "Content-Type": "application/json",
+            //     },
+            // })
+            const data = await axios.post("/api/board", { name });
             console.log(data);
+            setName("");
             
         } catch (error) {
             console.error(error);
