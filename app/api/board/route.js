@@ -46,4 +46,42 @@ export async function POST(req) {
             { status: 500 }
         );
     }
-}   
+}  
+
+export async function DELETE(req) {
+    try {
+        const  { searchParams} = req.nextUrl;
+        const boardId = searchParams.get("boardId");
+        if (!boardId) {
+            return NextResponse.json(
+                { error: "BoardId is required" },
+                { status: 400 }
+            );
+        }
+
+        const session = await auth();
+
+        if (!session) {
+            return NextResponse.json(
+                { error: "Unauthorized" },
+                { status: 401 }
+            );
+        }
+
+        await Board.deleteOne({
+            _id: boardId,
+            userId: session?.user?.id
+        })
+
+        const user = await User.findById(session?.user?.id);
+        user.boards = user.boards.filter((id) => id.toString() !== boardId );
+        await user.save();
+        
+    } catch (e) {
+        // send back error
+        return NextResponse.json(
+            { error: e.message },
+            { status: 500 }
+        );
+    }
+}
