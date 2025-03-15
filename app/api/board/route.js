@@ -50,15 +50,18 @@ export async function POST(req) {
 
 export async function DELETE(req) {
     try {
-        const  { searchParams} = req.nextUrl;
+        const { searchParams } = req.nextUrl;
         const boardId = searchParams.get("boardId");
+        
         if (!boardId) {
             return NextResponse.json(
                 { error: "BoardId is required" },
                 { status: 400 }
             );
         }
+        
 
+        // make sure the user owns the board
         const session = await auth();
 
         if (!session) {
@@ -71,11 +74,12 @@ export async function DELETE(req) {
         await Board.deleteOne({
             _id: boardId,
             userId: session?.user?.id
-        })
-
+        });
+        
         const user = await User.findById(session?.user?.id);
         user.boards = user.boards.filter((id) => id.toString() !== boardId );
         await user.save();
+        return NextResponse.json({});
         
     } catch (e) {
         // send back error

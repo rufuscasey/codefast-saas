@@ -16,7 +16,7 @@ const getBoard = async (boardId) => {
         console.log("Board not found");
         redirect("/");
     }
-    
+
     return board;
 };
 

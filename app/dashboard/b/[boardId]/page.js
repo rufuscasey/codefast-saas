@@ -4,6 +4,7 @@ import connectMongo from "@/libs/mongoose";
 import Board from "@/models/Board";
 import { auth } from "@/auth";
 import CardBoardLink from "@/components/CardBoardLink";
+import ButtonDeleteBoard from "@/components/ButtonDeleteBoard";
 
 
 const getBoard = async (boardId) => {
@@ -43,9 +44,10 @@ export default async function FeedbackBoard({ params }) {
         </section>
 
         <section className="max-w-5xl mx-auto px-5 py-12 space-y-12">
-       <h1 className="font-extrabold text-xl mb-4">{board.name}</h1> 
+        <h1 className="font-extrabold text-xl mb-4">{board.name}</h1> 
 
-       <CardBoardLink boardId={board._id} />
+        <CardBoardLink boardId={board._id} />
+        <ButtonDeleteBoard boardId={board._id} />
         </section>
                 
         
