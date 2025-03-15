@@ -1,3 +1,4 @@
+import Link from "next/link";
 import ButtonLogout from "@/components/ButtonLogout";
 import FormNewBoard from "@/components/FormNewBoard";
 import { auth } from "@/auth";
@@ -40,8 +41,12 @@ export default async function Dashboard() {
             {user.boards.map((board) => (
               <li 
                 key={board._id}
-                className="bg-base-100 p-6 rounded-3xl ">
-                {board.name}
+                >
+                <Link 
+                  href={`/dashboard/b/${board._id}`}
+                  className="bg-base-100 p-6 rounded-3xl block hover:bg-neutral hover:text-neutral-content duration-200">
+                  {board.name}
+                </Link>
               </li>
             ))}
           </ul>
