@@ -16,8 +16,11 @@ const ButtonDeleteBoard = ({boardId}) => {
                 console.log("Deleting board..." + boardId);
                 await axios.delete(`/api/board?boardId=${boardId}`);
                 toast.success("Board deleted!");
-                // Redirect to dashboard
+                // First navigate
                 router.push("/dashboard");
+            
+                // I added this but I think it's missing from instructions...)
+                 router.refresh();
                 
             }
         } catch (error) {

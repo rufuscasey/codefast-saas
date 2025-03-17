@@ -6,13 +6,19 @@ import connectMongo  from "@/libs/mongoose";
 import User from "@/models/User";
 import Board from "@/models/Board";
 
+
+
+
 async function getUser() {
   const session = await auth();
+  
 
   await connectMongo();
   return await User.findById(session.user.id).populate("boards");
 
 }
+
+
 
 export default async function Dashboard() {
 

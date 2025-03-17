@@ -77,6 +77,12 @@ export async function DELETE(req) {
         });
         
         const user = await User.findById(session?.user?.id);
+        if (!user) {
+            return NextResponse.json(
+                { error: "User not found" },
+                { status: 404 }
+            );
+        }
         user.boards = user.boards.filter((id) => id.toString() !== boardId );
         await user.save();
         return NextResponse.json({});
