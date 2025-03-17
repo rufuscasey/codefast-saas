@@ -8,7 +8,6 @@ import Board from "@/models/Board";
 
 
 
-
 async function getUser() {
   const session = await auth();
   

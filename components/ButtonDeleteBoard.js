@@ -16,7 +16,7 @@ const ButtonDeleteBoard = ({boardId}) => {
                 console.log("Deleting board..." + boardId);
                 await axios.delete(`/api/board?boardId=${boardId}`);
                 toast.success("Board deleted!");
-                // First navigate
+
                 router.push("/dashboard");
             
                 // I added this but I think it's missing from instructions...)
@@ -28,7 +28,6 @@ const ButtonDeleteBoard = ({boardId}) => {
                 error.response?.data?.error ||
                 error.message ||
                 "Failed to delete board";
-            console.error(error);
             toast.error(errorMessage);
         }
     };
