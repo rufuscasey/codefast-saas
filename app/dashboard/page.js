@@ -6,6 +6,8 @@ import connectMongo  from "@/libs/mongoose";
 import User from "@/models/User";
 import Board from "@/models/Board";
 
+// export const dynamic = 'force-dynamic';
+
 async function getUser() {
   const session = await auth();
 
