@@ -6,6 +6,8 @@ import { auth } from "@/auth";
 import CardBoardLink from "@/components/CardBoardLink";
 import ButtonDeleteBoard from "@/components/ButtonDeleteBoard";
 
+// Todo: delete me, test to see if vercel is working
+
 
 const getBoard = async (boardId) => {
     const session = await auth();
