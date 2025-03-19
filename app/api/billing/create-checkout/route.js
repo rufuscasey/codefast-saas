@@ -22,7 +22,7 @@ export async function POST(req) {
 		await connectMongo();
 		const user = await User.findById(session.user.id);
 
-		const stripe = new Stripe(process.env.STRIPE_API_KEY);
+		const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 		const stripeCheckoutSession = await stripe.checkout.sessions.create({
 			mode: "subscription",
