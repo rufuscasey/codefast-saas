@@ -30,6 +30,13 @@ export async function POST(req) {
 			user.hasAccess = true;
 			user.customerId = data.object.customer;
 			await user.save();
+		} else if (type === "customer.subscription.deleted") {
+			await connectMongo();
+			const user = await User.findOne({
+				customerId: data.object.customer,
+			});
+			user.hasAccess = false;
+			await user.save();
 		}
 	} catch (e) {
 		console.error("Stripe error: " + e?.message);
